@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"><!-- context:component-scan 쓰기위해추가 -->
+	
+	<!-- @Component 붙은 것들 자동으로 빈으로 등록, xml 네임스페이스 등록해야됨 -->
+	<context:component-scan base-package="org.almansa.app.service.boardService"></context:component-scan>	
+</beans>
