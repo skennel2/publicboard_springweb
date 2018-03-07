@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/root-context.xml", "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
-public class PostServiceTest {df 
+public class PostServiceTest {
 
 	@Autowired
 	PostService service;
@@ -34,17 +34,17 @@ public class PostServiceTest {df
 	
 	@Before
 	public void before() {
-		boardRepo.update(new DefaultTextBoard(1, "자유게", new Date(), new ArrayList<String>(), 300, true));
-		boardRepo.update(new DefaultTextBoard(2, "개발게", new Date(), new ArrayList<String>(), 300, true));
+		boardRepo.update(new DefaultTextBoard(1, "�옄�쑀寃�", new Date(), new ArrayList<String>(), 300, true));
+		boardRepo.update(new DefaultTextBoard(2, "媛쒕컻寃�", new Date(), new ArrayList<String>(), 300, true));
 	}
 	
 	@Test
 	public void boardAddTest() {
 		
-		service.writeNewPost(1, 1, "안녕", "hihihi");
+		service.writeNewPost(1, 1, "�븞�뀞", "hihihi");
 		service.writeNewPost(1, 1, "123", "1234");
 		service.writeNewPost(1, 1, "1324", "12345");
-		service.writeNewPost(2, 1, "개발게", "12345");
+		service.writeNewPost(2, 1, "媛쒕컻寃�", "12345");
 
 		List<Post> posts = service.getWritersPosts(1);	
 		

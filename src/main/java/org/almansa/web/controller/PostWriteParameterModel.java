@@ -1,6 +1,6 @@
 package org.almansa.web.controller;
 
-public class PostWriteModel {
+public class PostWriteParameterModel {
 
 	private long writerId;
 	private long boardId;

@@ -18,7 +18,7 @@ public class PostController {
 	private PostService postService;
 	
 	@RequestMapping(value="/write", method = RequestMethod.POST)
-	public String write(@ModelAttribute PostWriteModel postWriteModel) {
+	public String write(@ModelAttribute PostWriteParameterModel postWriteModel) {
 		System.out.println(postWriteModel.toString());
 		
 		postService.writeNewPost(postWriteModel.getWriterId(), postWriteModel.getBoardId(), postWriteModel.getName(), postWriteModel.getContents());
@@ -28,7 +28,6 @@ public class PostController {
 	
 	@RequestMapping(value="/write", method = RequestMethod.GET)
 	public String write() {
-		
 		return "writeform";
 	}
 	
