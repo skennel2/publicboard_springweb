@@ -7,4 +7,8 @@
 	
 	<!-- @Component 붙은 것들 자동으로 빈으로 등록, xml 네임스페이스 등록해야됨 -->
 	<context:component-scan base-package="org.almansa.app.service.boardService"></context:component-scan>	
+	<context:component-scan base-package="org.almansa.app.service.memberService"></context:component-scan>
+	<context:component-scan base-package="org.almansa.app.service.postService"></context:component-scan>		
+	<context:component-scan base-package="org.almansa.app.core.service.repository"></context:component-scan>		
+	
 </beans>
