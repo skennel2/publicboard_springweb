@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+	<tiles-definitions>       
+	    <definition name="root" template="/WEB-INF/views/layout/layout.jsp">
+	    	<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+	    	<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+	    </definition>
+	    
+		<!-- 위의 레이아웃을 상속 받은 액션 호출됐을 때 -->
+		<definition name="*" extends="root">
+		    <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+		</definition>
+		    	          
+	</tiles-definitions>
+	
+	

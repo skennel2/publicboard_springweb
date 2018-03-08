@@ -1,19 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="/post/write" name="postwrite" method="post">
-		제목 <input type="text" name="name"/>
-		내용 <input type="text" name="contents"/>
-		<input type="hidden" name="boardId" value ="1"/>
-		<input type="hidden" name="writerId" value ="1"/>
-		
-		<input type="submit" id="submit" value="등록"/>
-	</form>	
-</body>
-</html>
+
+	<form action="/post/write" name="postwrite" method="post" >
+		<div class=card>
+			<div class="card-body">
+				<div class="input-group">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="basic-addon3">제목</span>
+				  </div>
+				  <input type="text" class="form-control" name="name" aria-describedby="basic-addon3" required>
+				</div>	
+				
+				<div class="input-group">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text" id="basic-addon3">내용</span>
+				  </div>
+				  <textarea rows="6" class="form-control span6" name="contents" aria-describedby="basic-addon3" required></textarea>
+				</div>			
+			</div>
+			<div class="card-footer">
+				<input type="hidden" name="boardId" value ="1"/>
+				<input type="hidden" name="writerId" value ="1"/>	
+				<input type="submit" id="submit" value="등록" class="btn btn-default"/>
+			</div>
+		</div>
+	</form>
+	

@@ -43,6 +43,5 @@ public class PostWriteParameterModel {
 	public String toString() {
 		return "PostWriteModel [writerId=" + writerId + ", boardId=" + boardId + ", name=" + name + ", contents="
 				+ contents + "]";
-	}
-	
+	}	
 }
