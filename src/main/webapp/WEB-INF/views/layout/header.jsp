@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
@@ -9,10 +9,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/post/list">¸®½ºÆ® <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/post/list">ë¦¬ìŠ¤íŠ¸ <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/post/write">±Û¾²±â</a>
+        <a class="nav-link" href="/post/write">ê¸€ì“°ê¸°</a>
       </li>
     </ul>
   </div>

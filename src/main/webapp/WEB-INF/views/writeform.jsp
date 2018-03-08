@@ -1,28 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
-	<form action="/post/write" name="postwrite" method="post" >
-		<div class=card>
-			<div class="card-body">
-				<div class="input-group">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="basic-addon3">Á¦¸ñ</span>
-				  </div>
-				  <input type="text" class="form-control" name="name" aria-describedby="basic-addon3" required>
-				</div>	
-				
-				<div class="input-group">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="basic-addon3">³»¿ë</span>
-				  </div>
-				  <textarea rows="6" class="form-control span6" name="contents" aria-describedby="basic-addon3" required></textarea>
-				</div>			
-			</div>
-			<div class="card-footer">
-				<input type="hidden" name="boardId" value ="1"/>
-				<input type="hidden" name="writerId" value ="1"/>	
-				<input type="submit" id="submit" value="µî·Ï" class="btn btn-default"/>
-			</div>
+<form action="/post/write" name="postwrite" method="post" >
+	<div class=card>
+		<div class="card-body">
+			<div class="input-group">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon3">ì œëª©</span>
+			  </div>
+			  <input type="text" class="form-control" name="name" aria-describedby="basic-addon3" required>
+			</div>	
+			
+			<div class="input-group">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="basic-addon3">ë‚´ìš©</span>
+			  </div>
+			  <textarea rows="6" class="form-control span6" name="contents" aria-describedby="basic-addon3" required></textarea>
+			</div>			
 		</div>
-	</form>
+		<div class="card-footer">
+			<input type="hidden" name="boardId" value ="1"/>
+			<input type="hidden" name="writerId" value ="1"/>	
+			<input type="submit" id="submit" value="ë“±ë¡" class="btn btn-default"/>
+		</div>
+	</div>
+</form>
+
+<script>
 	
+</script>
+

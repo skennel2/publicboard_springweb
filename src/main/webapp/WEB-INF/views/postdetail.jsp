@@ -1,19 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="org.almansa.app.core.post.*" %>     
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach¸¦ ¾²±âÀ§ÇÔ %>  
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!--c:forEachë¥¼ ì“°ê¸°ìœ„í•¨ -->
+
 <div class="card">
     <div class="card-header">
-    	<h5 class="card-title">${post.getId()}. ${post.getName()} by <a href="#">${post.getWriterInfomation().getWriterLoginId()}</a></h5>
+    	<h5 class="card-title"><span class="text-info">${post.getId()}.${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getWriterLoginId()}</a></h5>
     </div>
 	<div class="card-body">
 		<p class="card-text">${post.getContents()}</p>
 		
 	</div> 
 	<div class="card-footer">
-		<a href="/post/list" class="btn btn-primary">µÚ·Î</a>
-		<a href="/post/list" class="btn btn-primary">¼öÁ¤</a>
-		<a href="/post/list" class="btn btn-danger">»èÁ¦</a>
+		<a href="/post/list" class="btn btn-primary">ë’¤ë¡œ</a>
+		<a href="/post/list" class="btn btn-primary">ìˆ˜ì •</a>
+		<a href="/post/list" class="btn btn-danger">ì‚­ì œ</a>
 	</div>
-
 </div>
+
+<script>
+</script>

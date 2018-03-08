@@ -47,7 +47,7 @@ public class PostController {
 	@RequestMapping(value="/detail/{id}", method = RequestMethod.GET)	
 	public ModelAndView detail(@PathVariable long id) {		
 		Post post = postService.getById(id);
-		//postService.getPostByUserClick(clickerId, postId)
+
 		ModelAndView mv = new ModelAndView();
 
 		if(post != null) {

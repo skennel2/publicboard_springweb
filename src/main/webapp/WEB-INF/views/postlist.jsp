@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="java.util.*" %> 
 <%@page import="org.almansa.app.core.post.*" %> 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach¸¦ ¾²±âÀ§ÇÔ %>    
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEachë¥¼ ì“°ê¸°ìœ„í•¨ %>    
 
-<table class="table">
-    <thead>
+<table class="table border">
+    <thead class="text-info">
       <tr>
         <th>No</th>
         <th>Subject</th>
@@ -19,10 +19,18 @@
 			<td> ${post.getId()} </td>
 			<td width="50%"> <a href="/post/detail/${post.getId()}">${post.getName()}</a> </td>
 			<td>${post.getWriterInfomation().getWriterLoginId()}</td>
-			<td> ${post.getCreationDate()} </td>
+			<td>${post.getCreationDate()} </td>
 		
 		<tr>
 	</c:forEach>
 	</tbody>
+	<tfoot class="text-info">
+		<tr>
+        	<th></th>
+        	<th></th>
+        	<th></th>
+        	<th></th>
+      	</tr>
+    </tfoot>
 </table>
 
