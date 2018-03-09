@@ -6,20 +6,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Inject;
 
 import org.almansa.app.core.board.DefaultTextBoard;
 import org.almansa.app.core.post.Post;
-import org.almansa.app.core.service.repository.BoardMockRepository;
 import org.almansa.app.core.service.repository.BoardRepository;
-import org.almansa.app.core.service.repository.MemberMockRepository;
-import org.almansa.app.core.service.repository.PostMockRepository;
 import org.almansa.app.service.postService.PostService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -36,21 +31,23 @@ public class PostServiceTest {
 
     @Before
     public void before() {
-        boardRepo.update(new DefaultTextBoard(1, "�옄�쑀寃�", new Date(), new ArrayList<String>(), 300, true));
-        boardRepo.update(new DefaultTextBoard(2, "媛쒕컻寃�", new Date(), new ArrayList<String>(), 300, true));
+        boardRepo.update(new DefaultTextBoard((long) 1, "�옄�쑀寃�", new Date(), new ArrayList<String>(), 300, true));
+        boardRepo.update(new DefaultTextBoard((long) 2, "媛쒕컻寃�", new Date(), new ArrayList<String>(), 300, true));
     }
 
     @Test
     public void boardAddTest() {
 
-        service.writeNewPost(1, 1, "�븞�뀞", "hihihi");
-        service.writeNewPost(1, 1, "123", "1234");
-        service.writeNewPost(1, 1, "1324", "12345");
-        service.writeNewPost(2, 1, "媛쒕컻寃�", "12345");
+        service.writeNewPost(new Long(1), new Long(1), "�븞�뀞", "hihihi");
+        service.writeNewPost(new Long(1), new Long(1), "123", "1234");
+        service.writeNewPost(new Long(1), new Long(1), "1324", "12345");
+        service.writeNewPost(new Long(2), new Long(1), "媛쒕컻寃�", "12345");
 
-        List<Post> posts = service.getWritersPosts(1);
+        List<Post> posts = service.getWritersPosts(new Long(1));
 
         System.out.println(posts.size());
         System.out.println(posts.toString());
     }
 }
+
+

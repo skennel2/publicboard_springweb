@@ -1,4 +1,4 @@
-package org.almansa.web.controller;
+package org.almansa.web.controller.dto;
 
 public class PostWriteParameterModel {
 

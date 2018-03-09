@@ -4,8 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.post.Post;
 import org.almansa.app.service.postService.PostService;
+import org.almansa.web.controller.dto.PostWriteParameterModel;
+import org.almansa.web.controller.validation.PostWiterParameterModelValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +25,17 @@ public class PostController {
     private PostService postService;
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
-    public String write(@ModelAttribute PostWriteParameterModel postWriteModel) {
-        System.out.println(postWriteModel.toString());
-
+    public String write(@ModelAttribute PostWriteParameterModel postWriteModel, BindingResult bindingResult) {
+        new PostWiterParameterModelValidator().validate(postWriteModel, bindingResult);
+        
+        if(bindingResult.hasErrors()) {
+            return "redirect:write";
+        }
+        
         postService.writeNewPost(postWriteModel.getWriterId(), postWriteModel.getBoardId(), postWriteModel.getName(),
                 postWriteModel.getContents());
-
-        return "redirect:list";
+        
+        return "redirect:list";           
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.GET)
@@ -40,7 +47,7 @@ public class PostController {
     public ModelAndView list() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("postlist");
-        mv.addObject("list", postService.getWritersPosts(1));
+        mv.addObject("list", postService.getWritersPosts(new Long(1)));
 
         return mv;
     }
