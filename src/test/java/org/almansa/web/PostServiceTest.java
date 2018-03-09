@@ -1,11 +1,8 @@
 package org.almansa.web;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 import org.almansa.app.core.board.DefaultTextBoard;
 import org.almansa.app.core.post.Post;

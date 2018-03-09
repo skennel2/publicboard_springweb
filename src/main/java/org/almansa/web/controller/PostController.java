@@ -1,7 +1,5 @@
 package org.almansa.web.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.almansa.app.core.post.Post;
 import org.almansa.app.service.postService.PostService;
 import org.almansa.web.controller.dto.PostWriteParameterModel;
@@ -11,24 +9,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/post")
 public class PostController {
 
-    @Autowired
     private PostService postService;
+    private PostWiterParameterModelValidator postWiterParameterModelValidator;
+    
+    @Autowired
+    public PostController(PostService postService, PostWiterParameterModelValidator postWiterParameterModelValidator) {
+        super();
+        this.postService = postService;
+        this.postWiterParameterModelValidator = postWiterParameterModelValidator;
+    }
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
-    public String write(@ModelAttribute PostWriteParameterModel postWriteModel, BindingResult bindingResult) {
-        new PostWiterParameterModelValidator().validate(postWriteModel, bindingResult);
+    public String write(@ModelAttribute PostWriteParameterModel postWriteModel, BindingResult bindingResult, RedirectAttributes redirectAttribute) {
+        postWiterParameterModelValidator.validate(postWriteModel, bindingResult);
         
         if(bindingResult.hasErrors()) {
+            redirectAttribute.addFlashAttribute("msg", bindingResult.getAllErrors());
             return "redirect:write";
         }
         
