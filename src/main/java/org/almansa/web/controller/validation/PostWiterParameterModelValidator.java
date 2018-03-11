@@ -23,7 +23,7 @@ public class PostWiterParameterModelValidator implements Validator {
         PostWriteParameterModel model = (PostWriteParameterModel)target;
         
         if(model.getName() == null || model.getName().length() < 10 || model.getName().length() > 100) {
-            errors.rejectValue("name", "name.length", "제목은 10 ~ 150");
+            errors.rejectValue("name", "name.length", "�젣紐⑹� 10 ~ 150");
         }        
     }
 }

@@ -25,10 +25,13 @@ public class MemberController {
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String login(@ModelAttribute LoginParameterModel loginParameter, HttpSession session) {
-        LoginUserSessionModel sessionModel = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
+        LoginUserSessionModel sessionModel 
+            = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
         
         if(sessionModel != null){
-            session.setAttribute("loginuser", sessionModel);
+            System.out.println(sessionModel.toString());
+        }else {
+            return "login";
         }
         
         return "redirect:/post/list"; 
@@ -38,4 +41,11 @@ public class MemberController {
     public String login() {
         return "login";
     }    
+    
+    @RequestMapping(value="/logout", method=RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.invalidate();
+        
+        return "redirect:/post/list"; 
+    }
 }

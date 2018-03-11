@@ -28,6 +28,15 @@
 	   		</beans:list>
 	  </beans:property>
 	</beans:bean>
+	
+	<!-- 로그인용 인터셉터 -->
+	<interceptors>
+	   <interceptor>
+	       <mapping path="/post/write"/>
+	       <mapping path="/admin/**"/>
+	       <beans:bean class="org.almansa.web.controller.intercepter.LoginCheckIntercepter"></beans:bean>
+	   </interceptor>
+	</interceptors>
 
 	<context:component-scan base-package="org.almansa.web" />
 	<context:component-scan base-package="org.almansa.web.controller" />

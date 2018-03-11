@@ -29,7 +29,11 @@ public class PostController {
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
-    public String write(@ModelAttribute PostWriteParameterModel postWriteModel, BindingResult bindingResult, RedirectAttributes redirectAttribute) {
+    public String write(
+            @ModelAttribute PostWriteParameterModel postWriteModel, 
+            BindingResult bindingResult, 
+            RedirectAttributes redirectAttribute) {
+        
         postWiterParameterModelValidator.validate(postWriteModel, bindingResult);
         
         if(bindingResult.hasErrors()) {
@@ -37,7 +41,10 @@ public class PostController {
             return "redirect:write";
         }
         
-        postService.writeNewPost(postWriteModel.getWriterId(), postWriteModel.getBoardId(), postWriteModel.getName(),
+        postService.writeNewPost(
+                postWriteModel.getWriterId(), 
+                postWriteModel.getBoardId(), 
+                postWriteModel.getName(),
                 postWriteModel.getContents());
         
         return "redirect:list";           

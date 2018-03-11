@@ -21,7 +21,7 @@
         <div class="card-footer">
             <input type="hidden" name="boardId" value ="1"/>
             <input type="hidden" name="writerId" value ="1"/>   
-            <input type="submit" id="submit" value="등록" class="btn btn-default"/>
+            <input type="submit" id="submit" value="로그인" class="btn btn-default"/>
         </div>
     </div>
 </form>
