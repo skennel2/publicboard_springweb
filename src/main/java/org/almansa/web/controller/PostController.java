@@ -1,5 +1,6 @@
 package org.almansa.web.controller;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.post.Post;
@@ -93,6 +94,14 @@ public class PostController implements InitializingBean {
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("PostController all of roperties setted");
+        System.out.println(this.getClass().getName() + " all of roperties setted");
+    }
+    
+    /**
+     * 생성자 호출후에 실행
+     */
+    @PostConstruct
+    public void initialize() {
+        System.out.println(this.getClass().getName() + " initialized");
     }
 }
