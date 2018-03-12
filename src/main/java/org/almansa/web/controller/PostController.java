@@ -39,7 +39,7 @@ public class PostController implements InitializingBean {
             BindingResult bindingResult,
             RedirectAttributes redirectAttribute, HttpSession session) {
         
-        postWiterParameterModelValidator.validate(postWriteModel, bindingResult); // 얘가 호출되어야 파라미터의 bindingResult의 내용이 채워진다. 
+        postWiterParameterModelValidator.validate(postWriteModel, bindingResult); // �뼐媛� �샇異쒕릺�뼱�빞 �뙆�씪誘명꽣�쓽 bindingResult�쓽 �궡�슜�씠 梨꾩썙吏꾨떎. 
         
         if(bindingResult.hasErrors()) {
             redirectAttribute.addFlashAttribute("msg", bindingResult.getAllErrors());
@@ -54,6 +54,7 @@ public class PostController implements InitializingBean {
                 postWriteModel.getName(),
                 postWriteModel.getContents());
         
+        redirectAttribute.addFlashAttribute("msg", "SUCCESS");
         return "redirect:list";           
     }
 
@@ -87,19 +88,11 @@ public class PostController implements InitializingBean {
         return mv;
     }
 
-    /**
-     * InitializingBean 구현
-     * 모든 프로퍼티들이 세팅된 후 호출된다.
-     * 별다른 설정은 필요하지 않다. 
-     */
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(this.getClass().getName() + " all of roperties setted");
     }
     
-    /**
-     * 생성자 호출후에 실행
-     */
     @PostConstruct
     public void initialize() {
         System.out.println(this.getClass().getName() + " initialized");

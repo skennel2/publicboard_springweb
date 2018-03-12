@@ -33,7 +33,6 @@ public class MemberController {
         }
         
         String redirectUrl = "/post/list";
-        //TODO 로그인 성공후, 이전 요청 페이지로 리다이렉트되는 처리  필요
        
         session.setAttribute("loginuser", sessionModel);        
         return "redirect:" + redirectUrl; 
