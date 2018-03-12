@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-    	<h5 class="card-title"><span class="text-info">${post.getId()}.${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getWriterLoginId()}</a></h5>
+    	<h5 class="card-title"><span class="text-info">${post.getId()}. ${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getWriterLoginId()}</a></h5>
     </div>
 	<div class="card-body">
 		<p class="card-text">${post.getContents()}</p>

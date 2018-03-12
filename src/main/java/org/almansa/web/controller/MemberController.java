@@ -28,13 +28,15 @@ public class MemberController {
         LoginUserSessionModel sessionModel 
             = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
         
-        if(sessionModel != null){
-            System.out.println(sessionModel.toString());
-        }else {
+        if(sessionModel == null){
             return "login";
         }
         
-        return "redirect:/post/list"; 
+        String redirectUrl = "/post/list";
+        //TODO 로그인 성공후, 이전 요청 페이지로 리다이렉트되는 처리  필요
+       
+        session.setAttribute("loginuser", sessionModel);        
+        return "redirect:" + redirectUrl; 
     }
     
     @RequestMapping(value="/login", method=RequestMethod.GET)

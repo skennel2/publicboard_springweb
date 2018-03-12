@@ -34,7 +34,11 @@
 	   <interceptor>
 	       <mapping path="/post/write"/>
 	       <mapping path="/admin/**"/>
-	       <beans:bean class="org.almansa.web.controller.intercepter.LoginCheckIntercepter"></beans:bean>
+	       <beans:bean class="org.almansa.web.intercepter.LoginCheckIntercepter"></beans:bean>
+	   </interceptor>
+	   <interceptor>
+	       <mapping path="/**"/>
+	       <beans:bean class="org.almansa.web.intercepter.ControllerIntercepter"></beans:bean>
 	   </interceptor>
 	</interceptors>
 
