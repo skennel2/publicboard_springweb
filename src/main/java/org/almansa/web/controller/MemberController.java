@@ -3,7 +3,7 @@ package org.almansa.web.controller;
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.service.dto.LoginUserSessionModel;
-import org.almansa.app.service.memberService.MemberServiceImpl;
+import org.almansa.app.service.memberService.MemberService;
 import org.almansa.web.controller.dto.LoginParameterModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/member")
 public class MemberController {
 
-    private MemberServiceImpl memberService;
+    private MemberService memberService;
 
     @Autowired
-    public MemberController(MemberServiceImpl memberService) {
+    public MemberController(MemberService memberService) {
         super();
         this.memberService = memberService;
     }
