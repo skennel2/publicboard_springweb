@@ -5,6 +5,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"><!-- context:component-scan 쓰기위해추가 -->
 	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.sqlite.JDBC"></property>
+        <property name="url" value="jdbc:sqlite:C:\sqlite\board.db"></property>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+    </bean>
+  
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+    
+	
 	<!-- @Component 붙은 것들 자동으로 빈으로 등록, xml 네임스페이스 등록해야됨 -->
 	<context:component-scan base-package="org.almansa.web.controller.validation"></context:component-scan>   
 	<context:component-scan base-package="org.almansa.app.service.boardService"></context:component-scan>	
