@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.almansa.app.core.board.DefaultTextBoard;
 import org.almansa.app.core.post.Post;
-import org.almansa.app.core.service.repository.BoardRepository;
-import org.almansa.app.service.postService.PostService;
+import org.almansa.app.core.repository.board.BoardRepository;
+import org.almansa.app.core.service.post.PostService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

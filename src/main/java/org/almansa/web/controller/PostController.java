@@ -4,8 +4,8 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.post.Post;
-import org.almansa.app.service.dto.LoginUserSessionModel;
-import org.almansa.app.service.postService.PostService;
+import org.almansa.app.core.service.dto.LoginUserSessionModel;
+import org.almansa.app.core.service.post.PostService;
 import org.almansa.web.controller.dto.PostWriteParameterModel;
 import org.almansa.web.controller.validation.PostWiterParameterModelValidator;
 import org.springframework.beans.factory.InitializingBean;

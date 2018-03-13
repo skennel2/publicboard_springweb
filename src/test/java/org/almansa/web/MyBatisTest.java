@@ -1,6 +1,6 @@
 package org.almansa.web;
 
-import org.almansa.app.core.service.repository.PostRepository;
+import org.almansa.app.core.repository.post.PostRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

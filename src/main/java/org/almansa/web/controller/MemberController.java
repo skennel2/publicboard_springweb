@@ -2,8 +2,8 @@ package org.almansa.web.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.almansa.app.service.dto.LoginUserSessionModel;
-import org.almansa.app.service.memberService.MemberService;
+import org.almansa.app.core.service.dto.LoginUserSessionModel;
+import org.almansa.app.core.service.member.MemberService;
 import org.almansa.web.controller.dto.LoginParameterModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
