@@ -28,8 +28,8 @@ public class PostServiceTest {
 
     @Before
     public void before() {
-        boardRepo.update(new DefaultTextBoard((long) 1, "�옄�쑀寃�", new Date(), new ArrayList<String>(), 300, true));
-        boardRepo.update(new DefaultTextBoard((long) 2, "媛쒕컻寃�", new Date(), new ArrayList<String>(), 300, true));
+        boardRepo.update(new DefaultTextBoard((long) 1, "�옄�쑀寃�", new Date(), new ArrayList<String>(), true));
+        boardRepo.update(new DefaultTextBoard((long) 2, "媛쒕컻寃�", new Date(), new ArrayList<String>(), true));
     }
 
     @Test

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@page import="org.almansa.app.service.dto.*"  %>
+<%@page import="org.almansa.app.core.service.dto.*"  %>
 
 <% 
     String user = "";
