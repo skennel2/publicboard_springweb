@@ -14,7 +14,7 @@
 	<div class="card-footer">
 		<a href="/post/list" class="btn btn-primary">뒤로</a>
 		<a href="/post/list" class="btn btn-primary">수정</a>
-		<a href="/post/list" class="btn btn-danger">삭제</a>
+		<a href="/post/delete/${post.getId()}" class="btn btn-danger">삭제</a>
 	</div>
 </div>
 

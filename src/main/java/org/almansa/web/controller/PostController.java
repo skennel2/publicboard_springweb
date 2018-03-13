@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -37,7 +38,8 @@ public class PostController implements InitializingBean {
     public String write(
             @ModelAttribute PostWriteParameterModel postWriteModel, 
             BindingResult bindingResult,
-            RedirectAttributes redirectAttribute, HttpSession session) {
+            RedirectAttributes redirectAttribute, 
+            HttpSession session) {
         
         postWiterParameterModelValidator.validate(postWriteModel, bindingResult); // �뼐媛� �샇異쒕릺�뼱�빞 �뙆�씪誘명꽣�쓽 bindingResult�쓽 �궡�슜�씠 梨꾩썙吏꾨떎. 
         
@@ -88,6 +90,18 @@ public class PostController implements InitializingBean {
         return mv;
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET) // TODO GET -> POST
+    public String delete(@PathVariable long id, HttpSession session) {
+        
+        LoginUserSessionModel loginUser = (LoginUserSessionModel) session.getAttribute("loginuser");
+        
+        if(loginUser != null) {
+            postService.deletePost(loginUser.getId(), id);
+        }
+        
+        return "redirect:/post/list";
+    }
+    
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(this.getClass().getName() + " all of roperties setted");
