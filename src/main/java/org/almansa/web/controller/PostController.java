@@ -4,7 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.post.Post;
-import org.almansa.app.core.service.dto.LoginUserSessionModel;
+import org.almansa.app.core.service.dto.LoginMemberSessionModel;
 import org.almansa.app.core.service.post.PostService;
 import org.almansa.web.controller.dto.PostWriteParameterModel;
 import org.almansa.web.controller.validation.PostWiterParameterModelValidator;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/post")
@@ -38,26 +39,23 @@ public class PostController implements InitializingBean {
     public String write(
             @ModelAttribute PostWriteParameterModel postWriteModel, 
             BindingResult bindingResult,
-            RedirectAttributes redirectAttribute, 
             HttpSession session) {
         
         postWiterParameterModelValidator.validate(postWriteModel, bindingResult); // �뼐媛� �샇異쒕릺�뼱�빞 �뙆�씪誘명꽣�쓽 bindingResult�쓽 �궡�슜�씠 梨꾩썙吏꾨떎. 
         
         if(bindingResult.hasErrors()) {
-            redirectAttribute.addFlashAttribute("msg", bindingResult.getAllErrors());
-            return "redirect:write";
+            return "redirect:/post/write";
         }
         
-        LoginUserSessionModel loginModel = (LoginUserSessionModel) session.getAttribute("loginuser");
+        LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");
         
         postService.writeNewPost(
                 loginModel.getId(), 
                 postWriteModel.getBoardId(), 
                 postWriteModel.getName(),
                 postWriteModel.getContents());
-        
-        redirectAttribute.addFlashAttribute("msg", "SUCCESS");
-        return "redirect:list";           
+                 
+        return "redirect:/post/list";          
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.GET)
@@ -75,8 +73,15 @@ public class PostController implements InitializingBean {
     }
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
-    public ModelAndView detail(@PathVariable long id) {
-        Post post = postService.getById(id);
+    public ModelAndView detail(@PathVariable long id, HttpSession session) {
+        LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");                
+                
+        Post post = null;
+        if(loginModel != null) {
+            post = postService.getPostByUserClick(loginModel.getId(), id);
+        }else {
+            post = postService.getById(id);
+        }
 
         ModelAndView mv = new ModelAndView();
 
@@ -93,7 +98,7 @@ public class PostController implements InitializingBean {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET) // TODO GET -> POST
     public String delete(@PathVariable long id, HttpSession session) {
         
-        LoginUserSessionModel loginUser = (LoginUserSessionModel) session.getAttribute("loginuser");
+        LoginMemberSessionModel loginUser = (LoginMemberSessionModel) session.getAttribute("loginuser");
         
         if(loginUser != null) {
             postService.deletePost(loginUser.getId(), id);

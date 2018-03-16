@@ -7,7 +7,7 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.sqlite.JDBC"></property>
-        <property name="url" value="jdbc:sqlite:C:\Users\skenn\Documents\Develop\db\board.db"></property>
+        <property name="url" value="jdbc:sqlite:C:\sqlite\board.db"></property>
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
@@ -25,5 +25,7 @@
 	<context:component-scan base-package="org.almansa.app.core.service.member"></context:component-scan>
 	<context:component-scan base-package="org.almansa.app.core.service.post"></context:component-scan>		
 	<context:component-scan base-package="org.almansa.app.core.repository"></context:component-scan>		
-	
+	<context:component-scan base-package="org.almansa.app.typehandler"></context:component-scan>        	
+	<context:component-scan base-package="org.almansa.app.core.cache.adminpost"></context:component-scan>      
+	<context:component-scan base-package="org.almansa.app.core.typehandler"></context:component-scan>      
 </beans>
