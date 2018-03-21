@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@page import="org.almansa.app.core.post.*" %>     
+<%@page import="org.almansa.app.core.entity.post.*" %>     
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!--c:forEach를 쓰기위함 -->
 
 <div class="card">
     <div class="card-header">
-    	<h4 class="card-title"><span class="text-info">${post.getId()}. ${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getWriterLoginId()}</a></h4>
+    	<h4 class="card-title"><span class="text-info">${post.getId()}. ${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getMemberLoginId()}</a></h4>
     </div>
     <div>조회수 : ${post.getClickCount()}</div>
 	<div class="card-body">

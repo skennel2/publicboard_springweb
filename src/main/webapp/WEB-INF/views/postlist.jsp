@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@page import="java.util.*" %> 
-<%@page import="org.almansa.app.core.post.*" %>   
+<%@page import="org.almansa.app.core.entity.post.*" %>   
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach를 쓰기위함 %>  
 
 <table class="table border">
@@ -18,7 +18,7 @@
 		<tr>
 			<td> ${post.getId()} </td>
 			<td width="50%"> <a href="/post/detail/${post.getId()}">${post.getName()}</a> </td>
-			<td>${post.getWriterInfomation().getWriterLoginId()}</td>
+			<td>${post.getWriterInfomation().getMemberLoginId()}</td>
 			<td>${post.getCreationDate()} </td>
 		
 		<tr>

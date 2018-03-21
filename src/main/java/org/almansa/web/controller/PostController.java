@@ -3,7 +3,7 @@ package org.almansa.web.controller;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
-import org.almansa.app.core.post.Post;
+import org.almansa.app.core.entity.post.Post;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
 import org.almansa.app.core.service.post.PostService;
 import org.almansa.web.controller.dto.PostWriteParameterModel;
