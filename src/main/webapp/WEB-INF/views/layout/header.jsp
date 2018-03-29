@@ -5,7 +5,7 @@
 <% 
     String user = "";
 
-    LoginUserSessionModel model = (LoginUserSessionModel)session.getAttribute("loginuser");
+    LoginMemberSessionModel model = (LoginMemberSessionModel)session.getAttribute("loginuser");
     if(model != null){
         user = model.getLoginId();
     }

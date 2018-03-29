@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.almansa.app.core.board.DefaultTextBoard;
-import org.almansa.app.core.post.Post;
+import org.almansa.app.core.entity.board.DefaultTextBoard;
+import org.almansa.app.core.entity.post.Post;
 import org.almansa.app.core.repository.board.BoardRepository;
 import org.almansa.app.core.service.post.PostService;
 import org.junit.Before;
