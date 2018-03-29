@@ -1,9 +1,13 @@
 package org.almansa.web.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
+import org.almansa.app.core.entity.comment.Comment;
 import org.almansa.app.core.entity.post.Post;
+import org.almansa.app.core.service.comment.CommentService;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
 import org.almansa.app.core.service.post.PostService;
 import org.almansa.web.controller.dto.PostWriteParameterModel;
@@ -16,10 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/post")
@@ -27,12 +28,15 @@ public class PostController implements InitializingBean {
 
     private PostService postService;
     private PostWiterParameterModelValidator postWiterParameterModelValidator;
-    
+    private CommentService commentService;
+
     @Autowired
-    public PostController(PostService postService, PostWiterParameterModelValidator postWiterParameterModelValidator) {
+    public PostController(PostService postService, PostWiterParameterModelValidator postWiterParameterModelValidator,
+            CommentService commentService) {
         super();
         this.postService = postService;
         this.postWiterParameterModelValidator = postWiterParameterModelValidator;
+        this.commentService = commentService;
     }
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
@@ -77,17 +81,21 @@ public class PostController implements InitializingBean {
         LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");                
                 
         Post post = null;
+        
         if(loginModel != null) {
             post = postService.getPostByUserClick(loginModel.getId(), id);
         }else {
             post = postService.getById(id);
         }
-
+        
+        List<Comment> comments = commentService.getPostsComments(id);
+        
         ModelAndView mv = new ModelAndView();
 
         if (post != null) {
             mv.setViewName("postdetail");
             mv.addObject("post", post);
+            mv.addObject("comments", comments);
         } else {
             mv.setViewName("postnotfound");
         }
