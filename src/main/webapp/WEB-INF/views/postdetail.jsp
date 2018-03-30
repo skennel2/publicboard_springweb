@@ -20,17 +20,19 @@
 	</div>
 	<hr>
 	<div id="comments_list">
-	    <c:forEach items="${comments}" var="comment">
-            <div>${comment.getContents()}</div>
-        </c:forEach>
+	    <ul>
+		    <c:forEach items="${comments}" var="comment">
+	            <li>${comment.getContents()}</li>
+	        </c:forEach>
+        </ul>
 	</div>
 	<div id="comment_write">
-	   <form action="/comment/write" name="comment_write">
-	       <input type="hidden" value="${post.getId()}">
+	   <form action="/comment/write" name="comment_write" method="post">
+	       <input type="hidden" name="postId" value="${post.getId()}">
 	       <textarea 
 	           rows="2" 
 	           class="form-control span6" 
-	           name="comment" 
+	           name="contents" 
 	           aria-describedby="basic-addon3" 
 	           required>
 	       </textarea>

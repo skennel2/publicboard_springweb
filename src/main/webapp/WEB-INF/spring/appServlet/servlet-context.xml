@@ -33,6 +33,7 @@
 	<interceptors>
 	   <interceptor>
 	       <mapping path="/post/write"/>
+	       <mapping path="/comment/write"/>
 	       <mapping path="/admin/**"/>
 	       <beans:bean class="org.almansa.web.intercepter.LoginCheckIntercepter"></beans:bean>
 	   </interceptor>
