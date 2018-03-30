@@ -36,7 +36,7 @@ public class MemberController {
        
         session.setAttribute("loginuser", sessionModel);        
         return "redirect:" + redirectUrl; 
-    }
+    } 
     
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login() {
