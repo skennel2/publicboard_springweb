@@ -45,7 +45,7 @@ public class PostController implements InitializingBean {
             BindingResult bindingResult,
             HttpSession session) {
         
-        postWiterParameterModelValidator.validate(postWriteModel, bindingResult); // �뼐媛� �샇異쒕릺�뼱�빞 �뙆�씪誘명꽣�쓽 bindingResult�쓽 �궡�슜�씠 梨꾩썙吏꾨떎. 
+        postWiterParameterModelValidator.validate(postWriteModel, bindingResult); 
         
         if(bindingResult.hasErrors()) {
             return "redirect:/post/write";
