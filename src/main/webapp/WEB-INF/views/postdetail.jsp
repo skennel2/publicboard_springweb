@@ -6,26 +6,30 @@
 
 <div class="card">
     <div class="card-header">
-    	<h4 class="card-title"><span class="text-info">${post.getId()}. ${post.getName()} by</span>  <a href="#">${post.getWriterInfomation().getMemberLoginId()}</a></h4>
+    	<h4 class="card-title">
+    	<span class="text-info">${post.getId()}. ${post.getName()} by</span>  
+    	<a href="#">${post.getWriterInfomation().getMemberLoginId()}</a></h4>
     </div>
+    
     <div>조회수 : ${post.getClickCount()}</div>
+    
 	<div class="card-body">
 		<p class="card-text">${post.getContents()}</p>
-		
 	</div> 
-	<div class="card-footer">
-		<a href="/post/list" class="btn btn-primary">뒤로</a>
-		<a href="/post/list" class="btn btn-primary">수정</a>
-		<a href="/post/delete/${post.getId()}" class="btn btn-danger">삭제</a>
-	</div>
-	<hr>
+	
+	<br>
+	
 	<div id="comments_list">
-	    <ul>
-		    <c:forEach items="${comments}" var="comment">
-	            <li>${comment.getContents()}</li>
+	    <div class="list-group">
+	        <c:forEach items="${comments}" var="comment">
+	            <div class="list-group-item list-group-item-action">
+	               <div class="text-info" style="width:30%">${comment.getWriterInfomation().getMemberLoginId()} : </div>
+	               <div>${comment.getContents()}</div>
+	            </div>
 	        </c:forEach>
-        </ul>
+	    </div>
 	</div>
+		
 	<div id="comment_write">
 	   <form action="/comment/write" name="comment_write" method="post">
 	       <input type="hidden" name="postId" value="${post.getId()}">
@@ -40,8 +44,17 @@
 	           <input type="submit" class="btn btn-primary" value="댓글달기">
 	       </div>
 	   </form>
+	</div>	
+	
+	<div class="card-footer">
+		<a href="/post/list" class="btn btn-primary">뒤로</a>
+		<a href="/post/list" class="btn btn-primary">수정</a>
+		<a href="/post/delete/${post.getId()}" class="btn btn-danger">삭제</a>
 	</div>
+	
 </div>
+
+
 
 <script>
 </script>
