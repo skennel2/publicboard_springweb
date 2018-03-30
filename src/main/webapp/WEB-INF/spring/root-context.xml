@@ -21,10 +21,8 @@
 	
 	<!-- @Component 붙은 것들 자동으로 빈으로 등록, xml 네임스페이스 등록해야됨 -->
 	<context:component-scan base-package="org.almansa.web.controller.validation"></context:component-scan>   
-	<context:component-scan base-package="org.almansa.app.core.service.board"></context:component-scan>	
-	<context:component-scan base-package="org.almansa.app.core.service.member"></context:component-scan>
-	<context:component-scan base-package="org.almansa.app.core.service.post"></context:component-scan>		
-	<context:component-scan base-package="org.almansa.app.core.repository"></context:component-scan>		
+	<context:component-scan base-package="org.almansa.app.core.service.*"></context:component-scan>	 	
+	<context:component-scan base-package="org.almansa.app.core.repository.*"></context:component-scan>		
 	<context:component-scan base-package="org.almansa.app.typehandler"></context:component-scan>        	
 	<context:component-scan base-package="org.almansa.app.core.cache.adminpost"></context:component-scan>      
 	<context:component-scan base-package="org.almansa.app.core.typehandler"></context:component-scan>      
