@@ -10,7 +10,7 @@ import org.almansa.app.core.entity.post.Post;
 import org.almansa.app.core.service.comment.CommentService;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
 import org.almansa.app.core.service.post.PostService;
-import org.almansa.web.controller.dto.PostWriteParameterModel;
+import org.almansa.web.controller.dto.PostWriteRequestDTO;
 import org.almansa.web.controller.validation.PostWiterParameterModelValidator;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class PostController implements InitializingBean {
 
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public String write(
-            @ModelAttribute PostWriteParameterModel postWriteModel, 
+            @ModelAttribute PostWriteRequestDTO postWriteModel, 
             BindingResult bindingResult,
             HttpSession session) {
         

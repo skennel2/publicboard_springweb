@@ -8,7 +8,7 @@
     <div class="card-header">
     	<h4 class="card-title">
     	<span class="text-info">${post.getId()}. ${post.getName()} by</span>  
-    	<a href="#">${post.getWriterInfomation().getMemberLoginId()}</a></h4>
+    	<a href="#">${post.getWriterId()}</a></h4>
     </div>
     
     <div>조회수 : ${post.getClickCount()}</div>
@@ -23,7 +23,7 @@
 	    <div class="list-group">
 	        <c:forEach items="${comments}" var="comment">
 	            <div class="list-group-item list-group-item-action">
-	               <div class="text-info" style="width:30%">${comment.getWriterInfomation().getMemberLoginId()} : </div>
+	               <div class="text-info" style="width:30%">${comment.getWriterId()} : </div>
 	               <div>${comment.getContents()}</div>
 	            </div>
 	        </c:forEach>
@@ -54,7 +54,6 @@
 	
 </div>
 
-
-
 <script>
+	
 </script>

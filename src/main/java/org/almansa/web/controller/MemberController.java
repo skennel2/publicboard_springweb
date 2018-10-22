@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
 import org.almansa.app.core.service.member.MemberService;
-import org.almansa.web.controller.dto.LoginParameterModel;
+import org.almansa.web.controller.dto.LoginRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +24,7 @@ public class MemberController {
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute LoginParameterModel loginParameter, HttpSession session) {
+    public String login(@ModelAttribute LoginRequestDTO loginParameter, HttpSession session) {
         LoginMemberSessionModel sessionModel 
             = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
         

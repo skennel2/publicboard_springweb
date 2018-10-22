@@ -1,6 +1,6 @@
 package org.almansa.web.controller.dto;
 
-public class LoginParameterModel {
+public class LoginRequestDTO {
     String loginId;
     String password;
     

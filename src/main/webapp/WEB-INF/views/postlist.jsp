@@ -18,7 +18,7 @@
 		<tr>
 			<td> ${post.getId()} </td>
 			<td width="50%"> <a href="/post/detail/${post.getId()}">${post.getName()}</a> </td>
-			<td>${post.getWriterInfomation().getMemberLoginId()}</td>
+			<td>${post.getWriterId()}</td>
 			<td>${post.getCreationDate()} </td>
 		
 		<tr>

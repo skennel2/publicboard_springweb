@@ -1,6 +1,6 @@
 package org.almansa.web.controller.dto;
 
-public class PostWriteParameterModel {
+public class PostWriteRequestDTO {
 
     private long writerId;
     private long boardId;
