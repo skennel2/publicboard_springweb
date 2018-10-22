@@ -19,21 +19,13 @@
 	
 	<br>
 	
-	<div id="comments_list">
-	    <div class="list-group">
-	        <c:forEach items="${comments}" var="comment">
-	            <div class="list-group-item list-group-item-action">
-	               <div class="text-info" style="width:30%">${comment.getWriterId()} : </div>
-	               <div>${comment.getContents()}</div>
-	            </div>
-	        </c:forEach>
-	    </div>
-	</div>
+	<div id="comments_list"></div>
 		
 	<div id="comment_write">
-	   <form action="/comment/write" name="comment_write" method="post">
+	   <div>
 	       <input type="hidden" name="postId" value="${post.getId()}">
 	       <textarea 
+	           id= "input-comment"
 	           rows="2" 
 	           class="form-control span6" 
 	           name="contents" 
@@ -41,9 +33,9 @@
 	           required>
 	       </textarea>
 	       <div class="text-center">
-	           <input type="submit" class="btn btn-primary" value="댓글달기">
+	           <button id="btn-comment" class="btn btn-primary">댓글달기</button>
 	       </div>
-	   </form>
+	   </div>
 	</div>	
 	
 	<div class="card-footer">
@@ -55,5 +47,45 @@
 </div>
 
 <script>
+
+	
+	function loadComment(){
+		$.getJSON("/rest/comment/bypost/1", function(data){
+			console.log(data);
+			
+			var commentListHtml = '';
+			$(data).each(function(item){
+				commentListHtml += "<div class='list-group-item list-group-item-action'>"
+				                +  "<div class='text-info' style='width:30%''>" + this.ownerPostId + "</div>"
+				                +  "<div>" + this.contents +"</div>"
+				                +  "</div>"
+			});
+			
+			$("#comments_list").html(commentListHtml);
+		});
+	}
+	
+	$('#btn-comment').click(function(){
+		
+		var commentValue = $('#input-comment').val();
+
+		$.ajax({
+			method : 'POST',
+			contentType: 'application/json',
+			url : '/rest/comment',
+			data : JSON.stringify({
+				postId : 1,
+				memberId : 1,
+				contents : commentValue,
+				writeDate : new Date()
+			}),
+			success : function(result){
+				loadComment();
+			}
+		});
+	})
+	
+	loadComment();
+	
 	
 </script>
