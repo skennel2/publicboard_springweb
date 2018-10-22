@@ -23,7 +23,7 @@
 		
 	<div id="comment_write">
 	   <div>
-	       <input type="hidden" name="postId" value="${post.getId()}">
+	       <input type="hidden" id="postId" name="postId" value="${post.getId()}">
 	       <textarea 
 	           id= "input-comment"
 	           rows="2" 
@@ -50,13 +50,13 @@
 
 	
 	function loadComment(){
-		$.getJSON("/rest/comment/bypost/1", function(data){
+		$.getJSON("/rest/comment/bypost/" + $('#postId').val(), function(data){
 			console.log(data);
 			
 			var commentListHtml = '';
 			$(data).each(function(item){
 				commentListHtml += "<div class='list-group-item list-group-item-action'>"
-				                +  "<div class='text-info' style='width:30%''>" + this.ownerPostId + "</div>"
+				                +  "<div class='text-info' style='width:30%''>" + this.writerId + "</div>"
 				                +  "<div>" + this.contents +"</div>"
 				                +  "</div>"
 			});
@@ -74,12 +74,13 @@
 			contentType: 'application/json',
 			url : '/rest/comment',
 			data : JSON.stringify({
-				postId : 1,
+				postId : $('#postId').val(),
 				memberId : 1,
 				contents : commentValue,
 				writeDate : new Date()
 			}),
 			success : function(result){
+				$('#input-comment').val('')
 				loadComment();
 			}
 		});
