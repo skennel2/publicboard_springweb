@@ -16,21 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rest/comment")
 public class CommentRestController {
-    private CommentService commentService;
-    
-    @Autowired
-    public CommentRestController(CommentService commentService) {
-        super();
-        this.commentService = commentService;
-    }
-    
-    @GetMapping("/bypost/{postId}")
-    public List<Comment> getCommentByPostId(@PathVariable Long postId){
-    	return commentService.getPostsComments(postId);
-    }
-    
-    @PostMapping
-    public void write(@RequestBody CommentWriteRequestDTO commentWriteRequest){
-    	commentService.writeComment(commentWriteRequest.getPostId(), commentWriteRequest.getMemberId(), commentWriteRequest.getContents());
-    } 
+	
+	private CommentService commentService;
+
+	@Autowired
+	public CommentRestController(CommentService commentService) {
+		super();
+		this.commentService = commentService;
+	}
+
+	@GetMapping("/bypost/{postId}")
+	public List<Comment> getCommentByPostId(@PathVariable Long postId) {
+		return commentService.getPostsComments(postId);
+	}
+
+	@PostMapping
+	public void write(@RequestBody CommentWriteRequestDTO commentWriteRequest) {
+		commentService.writeComment(commentWriteRequest.getPostId(), commentWriteRequest.getMemberId(),
+				commentWriteRequest.getContents());
+	}
 }
