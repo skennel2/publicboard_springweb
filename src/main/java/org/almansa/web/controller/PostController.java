@@ -29,7 +29,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class PostController implements InitializingBean {
 
 	private PostService postService;
+	
 	private PostWiterParameterModelValidator postWiterParameterModelValidator;
+	
 	private CommentService commentService;
 
 	@Autowired
