@@ -26,10 +26,10 @@ public class CommentRestController {
 
 	private CommentService commentService;
 
-	private CommentViewModelAssembler commentViewModelAssembler;
+	private CommentViewModelAssembler<CommentViewModel> commentViewModelAssembler;
 
 	@Autowired
-	public CommentRestController(CommentService commentService, CommentViewModelAssembler commentViewModelAssembler) {
+	public CommentRestController(CommentService commentService, CommentViewModelAssembler<CommentViewModel> commentViewModelAssembler) {
 		super();
 		this.commentService = commentService;
 		this.commentViewModelAssembler = commentViewModelAssembler;
