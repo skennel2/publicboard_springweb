@@ -1,5 +1,7 @@
 package org.almansa.web.controller;
 
+import java.util.Objects;
+
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
@@ -25,16 +27,16 @@ public class MemberController {
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String login(@ModelAttribute LoginRequestDTO loginParameter, HttpSession session) {
-        LoginMemberSessionModel sessionModel 
+        LoginMemberSessionModel loginModel 
             = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
         
-        if(sessionModel == null){
+        if(Objects.isNull(loginModel)){
             return "login";
         }
         
         String redirectUrl = "/post/list";
        
-        session.setAttribute("loginuser", sessionModel);        
+        session.setAttribute("loginuser", loginModel);        
         return "redirect:" + redirectUrl; 
     } 
     

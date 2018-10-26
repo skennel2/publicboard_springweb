@@ -1,5 +1,7 @@
 package org.almansa.web.intercepter;
 
+import java.util.Objects;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,8 +14,8 @@ public class LoginCheckIntercepter extends HandlerInterceptorAdapter{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession(false);
-    
-        if(session == null || session.getAttribute("loginuser") == null) {
+        
+        if(Objects.isNull(session) || Objects.isNull(session.getAttribute("loginuser"))) {
             response.sendRedirect(request.getContextPath() + "/member/login");
             return false;
         }
