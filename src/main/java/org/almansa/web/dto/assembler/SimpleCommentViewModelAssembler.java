@@ -1,4 +1,4 @@
-package org.almansa.web.controller.dto;
+package org.almansa.web.dto.assembler;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,27 +8,28 @@ import java.util.stream.Collectors;
 import org.almansa.app.core.entity.comment.Comment;
 import org.almansa.app.core.entity.member.Member;
 import org.almansa.app.core.service.member.MemberService;
+import org.almansa.web.dto.CommentViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 @Component
-public class CommentDTOAssemblerImpl implements CommentDTOAssembler {
+public class SimpleCommentViewModelAssembler implements CommentViewModelAssembler<CommentViewModel> {
 
 	@Autowired
 	private MemberService memberService;
 
 	@Override
-	public List<CommentResponseDTO> assembleDto(List<Comment> comments) {
+	public List<CommentViewModel> assembleDto(List<Comment> comments) {
 	
 		if(CollectionUtils.isEmpty(comments)) {
-			return Collections.<CommentResponseDTO>emptyList();
+			return Collections.<CommentViewModel>emptyList();
 		}
 		
 		Map<Long, String> memberIdAndLoginIdMap = extractWriterMemberIdAndLoginIdMap(comments);
 		
 		return comments.stream().map((comment)->{
-			CommentResponseDTO dto = new CommentResponseDTO();
+			CommentViewModel dto = new CommentViewModel();
 			dto.setCommentId(comment.getId());
 			dto.setContents(comment.getContents());
 			dto.setWriteDate(comment.getCreationDate());
@@ -39,8 +40,8 @@ public class CommentDTOAssemblerImpl implements CommentDTOAssembler {
 	}
 	
 	@Override
-	public CommentResponseDTO assembleDto(Comment comment) {
-		CommentResponseDTO dto = new CommentResponseDTO();
+	public CommentViewModel assembleDto(Comment comment) {
+		CommentViewModel dto = new CommentViewModel();
 		dto.setCommentId(comment.getId());
 		dto.setContents(comment.getContents());
 		dto.setWriteDate(comment.getCreationDate());

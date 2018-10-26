@@ -1,8 +1,8 @@
-package org.almansa.web.controller.dto;
+package org.almansa.web.dto;
 
 import java.util.Date;
 
-public class CommentWriteRequestDTO {
+public class CommentWriteRequestModel {
 	private Long postId;
 	private Long writerMemberId;
 	private String contents;

@@ -1,10 +1,10 @@
-package org.almansa.web.controller.dto;
+package org.almansa.web.dto;
 
 import java.util.Date;
 
 import org.almansa.app.core.TextContentsContainable;
 
-public class CommentResponseDTO implements TextContentsContainable {
+public class CommentViewModel implements TextContentsContainable {
 	private Long commentId;
 	private Long writerMemberId;
 	private String writerMemberName;

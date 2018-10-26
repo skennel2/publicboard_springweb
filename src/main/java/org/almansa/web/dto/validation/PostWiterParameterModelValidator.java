@@ -1,6 +1,6 @@
-package org.almansa.web.controller.validation;
+package org.almansa.web.dto.validation;
 
-import org.almansa.web.controller.dto.PostWriteRequestDTO;
+import org.almansa.web.dto.PostWriteRequestModel;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -15,12 +15,12 @@ public class PostWiterParameterModelValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return PostWriteRequestDTO.class.equals(clazz);
+        return PostWriteRequestModel.class.equals(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-    	PostWriteRequestDTO model = (PostWriteRequestDTO)target;
+    	PostWriteRequestModel model = (PostWriteRequestModel)target;
         
         if(model.getName() == null || model.getName().length() < 10 || model.getName().length() > 100) {
             errors.rejectValue("name", "name.length", "name.length.error");

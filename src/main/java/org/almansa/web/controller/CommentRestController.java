@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.service.comment.CommentService;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
-import org.almansa.web.controller.dto.CommentDTOAssembler;
-import org.almansa.web.controller.dto.CommentResponseDTO;
-import org.almansa.web.controller.dto.CommentWriteRequestDTO;
+import org.almansa.web.dto.CommentViewModel;
+import org.almansa.web.dto.CommentWriteRequestModel;
+import org.almansa.web.dto.assembler.CommentViewModelAssembler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,24 +26,24 @@ public class CommentRestController {
 
 	private CommentService commentService;
 
-	private CommentDTOAssembler commentDTOAssembler;
+	private CommentViewModelAssembler commentViewModelAssembler;
 
 	@Autowired
-	public CommentRestController(CommentService commentService, CommentDTOAssembler commentDTOAssembler) {
+	public CommentRestController(CommentService commentService, CommentViewModelAssembler commentViewModelAssembler) {
 		super();
 		this.commentService = commentService;
-		this.commentDTOAssembler = commentDTOAssembler;
+		this.commentViewModelAssembler = commentViewModelAssembler;
 	}
 
 	@GetMapping("/bypost/{postId}")
-	public ResponseEntity<List<CommentResponseDTO>> getCommentByPostId(@PathVariable Long postId) {
-		List<CommentResponseDTO> results = commentDTOAssembler.assembleDto(commentService.getPostsComments(postId));
+	public ResponseEntity<List<CommentViewModel>> getCommentByPostId(@PathVariable Long postId) {
+		List<CommentViewModel> results = commentViewModelAssembler.assembleDto(commentService.getPostsComments(postId));
 
-		return new ResponseEntity<List<CommentResponseDTO>>(results, HttpStatus.OK);
+		return new ResponseEntity<List<CommentViewModel>>(results, HttpStatus.OK);
 	}
 
 	@PostMapping("/write")
-	public ResponseEntity<Void> write(@RequestBody CommentWriteRequestDTO commentWriteRequest, HttpSession session) {
+	public ResponseEntity<Void> write(@RequestBody CommentWriteRequestModel commentWriteRequest, HttpSession session) {
 		LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");
 		
 		if(Objects.isNull(loginModel)) {		

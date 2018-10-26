@@ -1,6 +1,6 @@
-package org.almansa.web.controller.dto;
+package org.almansa.web.dto;
 
-public class LoginRequestDTO {
+public class LoginRequestModel {
     String loginId;
     String password;
     
