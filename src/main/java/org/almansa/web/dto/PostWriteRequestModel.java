@@ -1,10 +1,13 @@
 package org.almansa.web.dto;
 
 public class PostWriteRequestModel {
-
+	
     private long writerId;
+    
     private long boardId;
+    
     private String name;
+    
     private String contents;
 
     public long getWriterId() {

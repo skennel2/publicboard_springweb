@@ -23,9 +23,9 @@ public class CommentController {
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public void write(long postId, String contents, HttpSession session) {
-		LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");
+		LoginMemberSessionModel loginModel = (LoginMemberSessionModel) session.getAttribute("loginuser");		
 		long memberId = loginModel.getId();
-
+		
 		commentService.writeComment(postId, memberId, contents);
 	}
 }

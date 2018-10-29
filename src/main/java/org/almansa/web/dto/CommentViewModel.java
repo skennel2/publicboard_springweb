@@ -5,10 +5,15 @@ import java.util.Date;
 import org.almansa.app.core.TextContentsContainable;
 
 public class CommentViewModel implements TextContentsContainable {
+	
 	private Long commentId;
+	
 	private Long writerMemberId;
+	
 	private String writerMemberName;
+	
 	private String contents;
+	
 	private Date writeDate;
 
 	public Long getCommentId() {
