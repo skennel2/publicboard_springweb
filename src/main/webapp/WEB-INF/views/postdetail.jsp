@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <%@page import="org.almansa.app.core.entity.post.*" %>   
 <%@page import="org.almansa.app.core.entity.comment.*" %>
-<%@page import="org.almansa.web.controller.dto.*" %>     
+<%@page import="org.almansa.web.dto.*" %>     
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!--c:forEach를 쓰기위함 -->
 
 <div class="card">

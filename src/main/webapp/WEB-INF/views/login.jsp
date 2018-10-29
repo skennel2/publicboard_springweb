@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@page import="java.util.*" %>    
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach를 쓰기위함 %>  
 
 <form action="/member/login" name="memberlogin" method="post" >
@@ -25,4 +26,11 @@
             <input type="submit" id="submit" value="로그인" class="btn btn-default"/>
         </div>
     </div>
+    
+	<c:forEach items="${LoginFailMessages}" var="msg">
+		<div>
+			<div> ${msg} </div>		
+		</div>
+	</c:forEach>    
+    
 </form>

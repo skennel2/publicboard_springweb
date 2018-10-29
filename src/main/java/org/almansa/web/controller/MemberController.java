@@ -1,7 +1,5 @@
 package org.almansa.web.controller;
 
-import java.util.Objects;
-
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member")
@@ -26,18 +25,26 @@ public class MemberController {
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute LoginRequestModel loginParameter, HttpSession session) {
-        LoginMemberSessionModel loginModel 
-            = memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
+    public ModelAndView login(@ModelAttribute LoginRequestModel loginParameter, HttpSession session) {
+    	ModelAndView view = new ModelAndView();
+    	
+    	try {
+    		LoginMemberSessionModel loginModel 
+        		= memberService.loginAndGetUserSessionModel(loginParameter.getLoginId(), loginParameter.getPassword());
         
-        if(Objects.isNull(loginModel)){
-            return "login";
-        }
-        
-        String redirectUrl = "/post/list";
-       
-        session.setAttribute("loginuser", loginModel);        
-        return "redirect:" + redirectUrl; 
+        	if(loginModel.isLoginSuccess()){       
+        		view.setViewName("redirect:/post/list");
+        		
+        		session.setAttribute("loginuser", loginModel);        		        	
+        	}else {
+        		view.setViewName("login");
+        		view.addObject("LoginFailMessages", loginModel.getFailureMessages());
+        	}                
+        	
+    	}catch(Exception ex) {
+    		throw ex;
+    	}
+        return view; 
     } 
     
     @RequestMapping(value="/login", method=RequestMethod.GET)
