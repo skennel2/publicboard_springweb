@@ -26,7 +26,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/member/login">로그인</a>
-      </li>      
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/member/join">회원가입</a>
+      </li>           
     </ul>
   </div>
 </nav>

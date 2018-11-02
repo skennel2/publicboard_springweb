@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ContollerExceptionHandler {
 
 	@ExceptionHandler(value = Exception.class)
-	public String exception(Exception ex) {
-		return ex.getMessage();
+	public String handleException(Exception ex) {
+		ex.printStackTrace();
+		return "error";
 	}
 }
