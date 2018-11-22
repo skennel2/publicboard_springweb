@@ -30,8 +30,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public void join(String loginId, String password, String passwordCheck) {
+	public String join(String loginId, String password, String passwordCheck) {
 		memberService.joinSimply(loginId, passwordCheck, passwordCheck);
+		
+		return "redirect:/post/list";
 	}	
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
