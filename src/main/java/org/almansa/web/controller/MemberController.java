@@ -3,6 +3,7 @@ package org.almansa.web.controller;
 import javax.servlet.http.HttpSession;
 
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
+import org.almansa.app.core.service.member.MemberJoinException;
 import org.almansa.app.core.service.member.MemberService;
 import org.almansa.web.dto.LoginRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String join(String loginId, String password, String passwordCheck) {
+	public String join(String loginId, String password, String passwordCheck) throws MemberJoinException {
 		memberService.joinSimply(loginId, passwordCheck, passwordCheck);
 		
 		return "redirect:/post/list";

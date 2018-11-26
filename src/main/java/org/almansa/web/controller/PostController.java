@@ -10,6 +10,7 @@ import org.almansa.app.core.entity.comment.Comment;
 import org.almansa.app.core.entity.post.Post;
 import org.almansa.app.core.service.comment.CommentService;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
+import org.almansa.app.core.service.post.PostModifyException;
 import org.almansa.app.core.service.post.PostService;
 import org.almansa.web.dto.PostWriteRequestModel;
 import org.almansa.web.dto.validation.PostWiterParameterModelValidator;
@@ -101,7 +102,7 @@ public class PostController implements InitializingBean {
 	}
 
 	@PostMapping(path = "/delete/{id}")
-	public String delete(@PathVariable long id, HttpSession session) {
+	public String delete(@PathVariable long id, HttpSession session) throws PostModifyException {
 
 		LoginMemberSessionModel loginUser = (LoginMemberSessionModel) session.getAttribute("loginuser");
 
