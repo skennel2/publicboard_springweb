@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@page import="java.util.*" %>    
+<%@ page import="java.util.*" %>    
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach를 쓰기위함 %>  
 
 <% 
-	String value = request.getParameter("needLogin");
+	String needLogin = request.getParameter("needLogin");
 
 	String message = "";
-	if(value.equals("true")){
+	if(needLogin != null && needLogin.equals("true")){
 		message = "로그인이 필요합니다";
 	}
 
@@ -39,8 +39,8 @@
         </div>
     </div>
     
-<%-- 	<c:forEach items="${LoginFailMessages}" var="msg"> --%>
-<%-- 		<div class="text-danger"> ${msg} </div>		 --%>
-<%-- 	</c:forEach>     --%>
+	<c:forEach items="${LoginFailMessages}" var="msg">
+		<div class="text-danger"> ${msg} </div>		
+	</c:forEach>    
     
 </form>
