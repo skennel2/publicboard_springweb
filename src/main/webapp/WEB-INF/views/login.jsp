@@ -3,8 +3,20 @@
 <%@page import="java.util.*" %>    
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <% // c:forEach를 쓰기위함 %>  
 
+<% 
+	String value = request.getParameter("needLogin");
+
+	String message = "";
+	if(value.equals("true")){
+		message = "로그인이 필요합니다";
+	}
+
+%>
+
+<%=message%>
+
 <form action="/member/login" name="memberlogin" method="post" >
-    <div class=card>
+    <div class= "card">
         <div class="card-body">
             <div class="input-group">
               <div class="input-group-prepend">
@@ -21,14 +33,14 @@
             </div>          
         </div>
         <div class="card-footer">
-            <input type="hidden" name="boardId" value ="1"/>
+            <input type="hidden" name="boardId" value ="1"/> 
             <input type="hidden" name="writerId" value ="1"/>   
             <input type="submit" id="submit" value="로그인" class="btn btn-default"/>
         </div>
     </div>
     
-	<c:forEach items="${LoginFailMessages}" var="msg">
-		<div class="text-danger"> ${msg} </div>		
-	</c:forEach>    
+<%-- 	<c:forEach items="${LoginFailMessages}" var="msg"> --%>
+<%-- 		<div class="text-danger"> ${msg} </div>		 --%>
+<%-- 	</c:forEach>     --%>
     
 </form>

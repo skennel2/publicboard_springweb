@@ -16,7 +16,7 @@ public class LoginCheckIntercepter extends HandlerInterceptorAdapter{
         HttpSession session = request.getSession(false);
         
         if(Objects.isNull(session) || Objects.isNull(session.getAttribute("loginuser"))) {
-            response.sendRedirect(request.getContextPath() + "/member/login");
+            response.sendRedirect(request.getContextPath() + "/member/login?needLogin=true");
             return false;
         }
     
