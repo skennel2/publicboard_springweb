@@ -40,7 +40,7 @@
 	</div>	
 	
 	<div class="card-footer">
-		<a href="/post/list" class="btn btn-primary">뒤로</a>
+		<a id="btn-back" href="/post/list" class="btn btn-primary">뒤로</a>
 		<a href="/post/list" class="btn btn-primary">수정</a>
 		<a href="/post/delete/${post.getId()}" class="btn btn-danger">삭제</a>
 	</div>
@@ -52,12 +52,11 @@
 
 		loadComment();
 		
-		$('#btn-comment').click(onClickBtnComment)
+		$('#btn-comment').click(onClickBtnComment);
+		$('#btn-back').click(onClickBtnBack)
 		
 		function loadComment(){
 			$.getJSON("/rest/comment/bypost/" + $('#postId').val(), function(data){
-				console.log(data);
-				
 				var commentListHtml = '';
 				$(data).each(function(item){
 					commentListHtml += "<div class='list-group-item list-group-item-action'>"
@@ -70,12 +69,22 @@
 			});
 		}
 		
+		function onClickBtnBack(e){
+			var commentValue = $('#input-comment').val();
+			
+			if(commentValue.trim().length > 0){
+				e.preventDefault();
+				alert('댓글창에 내용이 존재합니다.');
+				
+				$('#input-comment').focus();
+			}
+		}
+		
 		function onClickBtnComment(){
 			var commentValue = $('#input-comment').val();
 			
 			if(commentValue.trim().length <= 9){
 				alert('댓글은 최소한 10글자 이상 입력해주세요.');
-				
 				$('#input-comment').focus();
 				return;
 			}
@@ -97,6 +106,7 @@
 			});
 		}
 		
+		// end document ready
 	});
 
 
