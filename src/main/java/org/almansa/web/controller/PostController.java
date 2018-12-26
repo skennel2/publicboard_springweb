@@ -1,12 +1,10 @@
 package org.almansa.web.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
-import org.almansa.app.core.entity.comment.Comment;
 import org.almansa.app.core.entity.post.Post;
 import org.almansa.app.core.service.comment.CommentService;
 import org.almansa.app.core.service.dto.LoginMemberSessionModel;
@@ -87,13 +85,11 @@ public class PostController implements InitializingBean {
 			post = postService.getById(id);
 		}
 
-		List<Comment> comments = commentService.getPostsComments(id);
 		ModelAndView mv = new ModelAndView();
 
 		if (Objects.nonNull(post)) {
 			mv.setViewName("postdetail");
 			mv.addObject("post", post);
-			mv.addObject("comments", comments);
 		} else {
 			mv.setViewName("postnotfound");
 		}

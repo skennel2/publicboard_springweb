@@ -9,7 +9,7 @@
     <div class="card-header">
     	<h4 class="card-title">
     	<span class="text-info">${post.getId()}. ${post.getName()} by</span>  
-    	<a href="#">${post.getWriterId()}</a></h4>
+    	<a href="#">${post.getWriterLoginId()}</a></h4>
     </div>
     
     <div>조회수 : ${post.getClickCount()}</div>
@@ -108,8 +108,5 @@
 		
 		// end document ready
 	});
-
-
-	
 	
 </script>
