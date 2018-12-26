@@ -9,8 +9,8 @@ import org.springframework.session.data.redis.config.annotation.web.server.Enabl
 
 // @EnableRedisHttpSession 어노테이션이 SpringSessionRepositoryFilter(Filter의 구현체) 라는 빈을 생성합니다
 // 이 필터는 HttpSession의 구현체를 바꾸는 역할을 합니다.  
-@EnableRedisWebSession
-@Configuration
+//@EnableRedisWebSession
+//@Configuration
 public class RedisConfig {
 	@Bean
 	public JedisConnectionFactory connectionFactory() {

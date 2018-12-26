@@ -48,46 +48,58 @@
 </div>
 
 <script>
+	$( document ).ready(function() {
 
-	
-	function loadComment(){
-		$.getJSON("/rest/comment/bypost/" + $('#postId').val(), function(data){
-			console.log(data);
-			
-			var commentListHtml = '';
-			$(data).each(function(item){
-				commentListHtml += "<div class='list-group-item list-group-item-action'>"
-				                +  "<div class='text-info' style='width:30%''>" + this.writerMemberName + "</div>"
-				                +  "<div>" + this.contents +"</div>"
-				                +  "</div>"
+		loadComment();
+		
+		$('#btn-comment').click(onClickBtnComment)
+		
+		function loadComment(){
+			$.getJSON("/rest/comment/bypost/" + $('#postId').val(), function(data){
+				console.log(data);
+				
+				var commentListHtml = '';
+				$(data).each(function(item){
+					commentListHtml += "<div class='list-group-item list-group-item-action'>"
+					                +  "<div class='text-info' style='width:30%''>" + this.writerMemberName + "</div>"
+					                +  "<div>" + this.contents +"</div>"
+					                +  "</div>"
+				});
+				
+				$("#comments_list").html(commentListHtml);
 			});
+		}
+		
+		function onClickBtnComment(){
+			var commentValue = $('#input-comment').val();
 			
-			$("#comments_list").html(commentListHtml);
-		});
-	}
-	
-	$('#btn-comment').click(function(){
-		
-		var commentValue = $('#input-comment').val();
-		
-		$.ajax({
-			method : 'POST',
-			contentType: 'application/json',
-			url : '/rest/comment/write',
-			data : JSON.stringify({
-				postId : $('#postId').val(),
-				writerMemberId : 1,
-				contents : commentValue,
-				writeDate : new Date()
-			}),
-			success : function(result){
-				$('#input-comment').val('')
-				loadComment();
+			if(commentValue.trim().length <= 9){
+				alert('댓글은 최소한 10글자 이상 입력해주세요.');
+				
+				$('#input-comment').focus();
+				return;
 			}
-		});
-	})
-	
-	loadComment();
+			
+			$.ajax({
+				method : 'POST',
+				contentType: 'application/json',
+				url : '/rest/comment/write',
+				data : JSON.stringify({
+					postId : $('#postId').val(),
+					writerMemberId : 1,
+					contents : commentValue,
+					writeDate : new Date()
+				}),
+				success : function(result){
+					$('#input-comment').val('')
+					loadComment();
+				}
+			});
+		}
+		
+	});
+
+
 	
 	
 </script>
