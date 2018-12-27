@@ -54,20 +54,23 @@
 				alert('제목은 최소 '+ constValues.subjectMinimumLength +'글자 이상으로 작성해주세요');
 				e.preventDefault();
 				$('#subject').focus();
+				return;
 			}
 			
 			if(subject.trim().length >= constValues.subjectMaxLength){
 				alert('제목은 최소 '+ constValues.subjectMaxLength +'글자 이하로 작성해주세요');
 				e.preventDefault();
 				$('#subject').focus();
+				return;
 			}
 			
 			var contents = $('#contents').val();
 			
 			if(contents.trim().length <= constValues.contentsMinimumLength){
-				alert('내용은 최소 ' + 'constValues.contentsMinimumLength' + '글자 이상으로 작성해주세요');
+				alert('내용은 최소 ' + constValues.contentsMinimumLength + '글자 이상으로 작성해주세요');
 				e.preventDefault();
 				$('#contents').focus();
+				return;
 			}
 		}
 	});
