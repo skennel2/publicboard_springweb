@@ -38,27 +38,34 @@
 
 <script>
 	$( document ).ready(function() {
+		
+		var constValues = {
+			subjectMinimumLength : 10,
+			subjectMaxLength : 100,
+			contentsMinimumLength : 10
+		};
+		
 		$('#submit').click(onSubmit);
 		
 		function onSubmit(e){
 			var subject = $('#subject').val();
 			
-			if(subject.trim().length <= 10){
-				alert('제목은 최소 10글자 이상으로 작성해주세요');
+			if(subject.trim().length <= constValues.subjectMinimumLength){
+				alert('제목은 최소 '+ constValues.subjectMinimumLength +'글자 이상으로 작성해주세요');
 				e.preventDefault();
 				$('#subject').focus();
 			}
 			
-			if(subject.trim().length >= 100){
-				alert('제목은 최소 100글자 이하로 작성해주세요');
+			if(subject.trim().length >= constValues.subjectMaxLength){
+				alert('제목은 최소 '+ constValues.subjectMaxLength +'글자 이하로 작성해주세요');
 				e.preventDefault();
 				$('#subject').focus();
 			}
 			
 			var contents = $('#contents').val();
 			
-			if(contents.trim().length <= 10){
-				alert('내용은 최소 10글자 이상으로 작성해주세요');
+			if(contents.trim().length <= constValues.contentsMinimumLength){
+				alert('내용은 최소 ' + 'constValues.contentsMinimumLength' + '글자 이상으로 작성해주세요');
 				e.preventDefault();
 				$('#contents').focus();
 			}
