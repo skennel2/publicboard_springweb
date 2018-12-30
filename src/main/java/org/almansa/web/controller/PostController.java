@@ -30,16 +30,12 @@ public class PostController implements InitializingBean {
 	private PostService postService;
 	
 	private PostWiterParameterModelValidator postWiterParameterModelValidator;
-	
-	private CommentService commentService;
 
 	@Autowired
-	public PostController(PostService postService, PostWiterParameterModelValidator postWiterParameterModelValidator,
-			CommentService commentService) {
+	public PostController(PostService postService, PostWiterParameterModelValidator postWiterParameterModelValidator) {
 		super();
 		this.postService = postService;
 		this.postWiterParameterModelValidator = postWiterParameterModelValidator;
-		this.commentService = commentService;
 	}
 
 	@PostMapping(path = "/write")
