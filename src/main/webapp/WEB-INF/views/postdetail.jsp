@@ -12,7 +12,7 @@
     	<a href="#">${post.getWriterLoginId()}</a></h4>
     </div>
     
-    <div>조회수 : ${post.getClickCount()}</div>
+    <div><small>조회수 : ${post.getClickCount()}</small></div>
     
 	<div class="card-body">
 		<p class="card-text">${post.getContents()}</p>
@@ -60,7 +60,9 @@
 				var commentListHtml = '';
 				$(data).each(function(item){
 					commentListHtml += "<div class='list-group-item list-group-item-action'>"
-					                +  "<div class='text-info' style='width:30%''>" + this.writerMemberName + "</div>"
+					                +  "<div class='text-info' style='width:30%''>"
+					                +  this.writerMemberName
+					                +  "</div>"
 					                +  "<div>" + this.contents +"</div>"
 					                +  "</div>"
 				});
